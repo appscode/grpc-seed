@@ -1,0 +1,713 @@
+{
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "ClusterDescribeResponseClusterSpec": {
+      "properties": {
+        "container_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rc_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "service_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "total_cpu": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "total_memory": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ClusterMetadataResponseKubedConfig": {
+      "properties": {
+        "analytics_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "operator_namespace": {
+          "type": "string"
+        },
+        "reverse_index_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "search_enabled": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "version": {
+          "$ref": "#/definitions/versionVersion"
+        }
+      },
+      "type": "object"
+    },
+    "dtypesLongRunningResponse": {
+      "properties": {
+        "operation_phid": {
+          "type": "string"
+        }
+      },
+      "title": "Types for long running operation. usually called as jobs.\nNext Id = 3",
+      "type": "object"
+    },
+    "dtypesVoidResponse": {
+      "type": "object"
+    },
+    "v1alpha1Cluster": {
+      "properties": {
+        "api_server_url": {
+          "type": "string"
+        },
+        "ca_cert": {
+          "type": "string"
+        },
+        "created_at": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "default_access_level": {
+          "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "gce_project": {
+          "type": "string"
+        },
+        "instance_root_password": {
+          "type": "string"
+        },
+        "kube_bearer_token": {
+          "type": "string"
+        },
+        "kube_password": {
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "kube_user": {
+          "type": "string"
+        },
+        "kubelet_version": {
+          "type": "string"
+        },
+        "links": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "name": {
+          "type": "string"
+        },
+        "node_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "os": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/definitions/v1alpha1ClusterSettings"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "status_cause": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterApplyRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterClientConfigRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterClientConfigResponse": {
+      "properties": {
+        "api_server_url": {
+          "type": "string"
+        },
+        "ca_cert": {
+          "type": "string"
+        },
+        "cluster_domain": {
+          "type": "string"
+        },
+        "cluster_user_name": {
+          "type": "string"
+        },
+        "context_name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "user_cert": {
+          "type": "string"
+        },
+        "user_key": {
+          "type": "string"
+        },
+        "user_token": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterCreateRequest": {
+      "properties": {
+        "credential_uid": {
+          "type": "string"
+        },
+        "default_access_level": {
+          "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access\nIf not set this will set \"\"",
+          "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "gce_project": {
+          "type": "string"
+        },
+        "kubernetes_version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "node_groups": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1InstanceGroup"
+          },
+          "type": "array"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterDeleteRequest": {
+      "properties": {
+        "delete_dynamic_volumes": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "force": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "keep_lodabalancers": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "release_reserved_ip": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterDescribeRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterDescribeResponse": {
+      "properties": {
+        "cluster": {
+          "$ref": "#/definitions/v1alpha1Cluster"
+        },
+        "operation_uid": {
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/definitions/ClusterDescribeResponseClusterSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterListRequest": {
+      "properties": {
+        "status": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterListResponse": {
+      "properties": {
+        "clusters": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Cluster"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterMetadataRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterMetadataResponse": {
+      "properties": {
+        "custom_resources": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "kubed_config": {
+          "$ref": "#/definitions/ClusterMetadataResponseKubedConfig"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterReconfigureRequest": {
+      "properties": {
+        "apply_to_master": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "kubernetes_version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterSettings": {
+      "properties": {
+        "log_index_prefix": {
+          "type": "string"
+        },
+        "log_storage_lifetime": {
+          "format": "int64",
+          "title": "Number of secs logs will be stored in ElasticSearch",
+          "type": "integer"
+        },
+        "monitoring_storage_lifetime": {
+          "format": "int64",
+          "title": "Number of secs logs will be stored in InfluxDB",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterUpdateRequest": {
+      "properties": {
+        "default_access_level": {
+          "title": "Default access level is to allow permission to the cluster\nwhen no Role matched for that specif user or group. This can\nset as\n  - kubernetes:team-admin\n  - kubernetes:cluster-admin\n  - kubernetes:admin\n  - kubernetes:editor\n  - kubernetes:viewer\n  - deny-access",
+          "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/definitions/v1alpha1ClusterSettings"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1InstanceGroup": {
+      "properties": {
+        "count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "use_spot_instances": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "versionVersion": {
+      "properties": {
+        "arch": {
+          "type": "string"
+        },
+        "build_host": {
+          "type": "string"
+        },
+        "build_host_arch": {
+          "type": "string"
+        },
+        "build_host_os": {
+          "type": "string"
+        },
+        "build_timestamp": {
+          "type": "string"
+        },
+        "commit_hash": {
+          "type": "string"
+        },
+        "commit_timestamp": {
+          "type": "string"
+        },
+        "git_branch": {
+          "type": "string"
+        },
+        "git_tag": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "version_strategy": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.appscode.com",
+  "info": {
+    "title": "cluster.proto",
+    "version": "1alpha1"
+  },
+  "paths": {
+    "/plow/v1alpha1/clusters/json": {
+      "get": {
+        "operationId": "List",
+        "parameters": [
+          {
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "status",
+            "required": false,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{name}/actions/apply/json": {
+      "put": {
+        "operationId": "Apply",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterApplyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{name}/actions/reconfigure/json": {
+      "put": {
+        "operationId": "Reconfigure",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterReconfigureRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{name}/client-config/json": {
+      "get": {
+        "operationId": "ClientConfig",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterClientConfigResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{name}/json": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      },
+      "put": {
+        "operationId": "Update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{uid}/json": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{uid}/metadata/json": {
+      "get": {
+        "operationId": "Metadata",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ClusterMetadataResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}

@@ -1,0 +1,398 @@
+{
+  "definitions": {
+    "v1alpha1ConfigMapEditRequest": {
+      "properties": {
+        "add": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "deleted": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "update": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CopyResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "destination": {
+          "$ref": "#/definitions/v1alpha1KubeObject"
+        },
+        "source": {
+          "$ref": "#/definitions/v1alpha1KubeObject"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CreateResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1alpha1Raw"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DeleteResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DescribeResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "include_metrics": {
+          "type": "boolean"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "raw": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskCreateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "disk_type": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "size_gb": {
+          "type": "integer"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1KubeObject": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ListResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "include_metrics": {
+          "type": "boolean"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "selector": {
+          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaimRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "size_gb": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaimUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        },
+        "size_gb": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Raw": {
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReverseIndexResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "targetType": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SecretEditRequest": {
+      "properties": {
+        "add": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "deleted": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "update": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1UpdateResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1alpha1Raw"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

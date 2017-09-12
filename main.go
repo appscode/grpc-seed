@@ -4,7 +4,7 @@ import (
 	"os"
 
 	logs "github.com/appscode/log/golog"
-	"github.com/appscode/plow/cmds"
+	"github.com/appscode/plow/pkg/cmds"
 )
 
 func main() {

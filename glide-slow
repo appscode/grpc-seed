@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # You can execute me through Glide by doing the following:
 # - Execute `glide slow`

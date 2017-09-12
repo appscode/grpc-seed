@@ -1,0 +1,5040 @@
+{
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "ClusterAlertClusterAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "string"
+        },
+        "check": {
+          "title": "Icinga CheckCommand name\nValues are in\n   any_http\n   component_status\n   json_path\n   node_exists\n   pod_exists\n   kube_event\n   certificate_expiry\n   hello_icinga\n   dig\n   dns\n   dummy\n   icmp",
+          "type": "string"
+        },
+        "check_interval": {
+          "type": "string"
+        },
+        "receivers": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1AlertReceiver"
+          },
+          "type": "array"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "DeploymentDeploymentStatus": {
+      "properties": {
+        "available_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ResourceCondition"
+          },
+          "type": "array"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "unavailable_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "updated_replicas": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "IngressHTTPIngressBackend": {
+      "properties": {
+        "header_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ingress_backend": {
+          "$ref": "#/definitions/IngressIngressBackend"
+        },
+        "rewrite_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "IngressHTTPIngressPath": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/IngressHTTPIngressBackend"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressHTTPIngressRuleValue": {
+      "properties": {
+        "no_TLS": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "node_port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "paths": {
+          "items": {
+            "$ref": "#/definitions/IngressHTTPIngressPath"
+          },
+          "type": "array"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "IngressIngressBackend": {
+      "properties": {
+        "backend_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "host_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "service_name": {
+          "type": "string"
+        },
+        "service_port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "IngressIngressRule": {
+      "properties": {
+        "HTTP": {
+          "$ref": "#/definitions/IngressHTTPIngressRuleValue"
+        },
+        "TCP": {
+          "$ref": "#/definitions/IngressTCPIngressRuleValue"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressIngressTLS": {
+      "properties": {
+        "hosts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "secret_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IngressTCPIngressRuleValue": {
+      "properties": {
+        "ALPN": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "backend": {
+          "$ref": "#/definitions/IngressIngressBackend"
+        },
+        "no_TLS": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "node_port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListCertificates": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Certificate"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListClusterAlerts": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ClusterAlert"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListClusterRoleBindings": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ClusterRoleBinding"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListClusterRoles": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ClusterRole"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListConfigMaps": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ConfigMap"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListCronJobs": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1CronJob"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListDaemonSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1DaemonSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListDeployments": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Deployment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListDormantDatabases": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1DormantDatabase"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListElasticsearches": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Elasticsearch"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListEvents": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/plowv1alpha1Event"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListIngresses": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Ingress"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListJobs": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Job"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListNamespaces": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Namespace"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListNodeAlerts": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1NodeAlert"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListNodes": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Node"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPersistentVolumeClaims": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1PersistentVolumeClaim"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPersistentVolumes": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1PersistentVolume"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPodAlerts": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1PodAlert"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPods": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Pod"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPostgreses": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Postgres"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListPrometheuses": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Prometheus"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListReplicaSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ReplicaSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListReplicationControllers": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ReplicationController"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListRestics": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Restic"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListRoleBindings": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1RoleBinding"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListRoles": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Role"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListSecrets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Secret"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListServiceMonitors": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ServiceMonitor"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListServices": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Service"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListSnapshots": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Snapshot"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListStatefulSets": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1StatefulSet"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "KubeResourceListStorageClasses": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1StorageClass"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "MetricsDataPoint": {
+      "properties": {
+        "timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "value": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "NamespaceNamespaceSpec": {
+      "properties": {
+        "finalizers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "NodeAlertNodeAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "string"
+        },
+        "check": {
+          "title": "Icinga CheckCommand name\nValues are in\n   influx_query\n   node_disk\n   node_status",
+          "type": "string"
+        },
+        "check_interval": {
+          "type": "string"
+        },
+        "node_name": {
+          "type": "string"
+        },
+        "receivers": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1AlertReceiver"
+          },
+          "type": "array"
+        },
+        "selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "NodeNodeStatus": {
+      "properties": {
+        "address": {
+          "items": {
+            "$ref": "#/definitions/NodeStatusNodeAddress"
+          },
+          "type": "array"
+        },
+        "allocatable": {
+          "$ref": "#/definitions/NodeStatusCapacity"
+        },
+        "capacity": {
+          "$ref": "#/definitions/NodeStatusCapacity"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ResourceCondition"
+          },
+          "type": "array"
+        },
+        "images": {
+          "items": {
+            "$ref": "#/definitions/NodeStatusContainerImage"
+          },
+          "type": "array"
+        },
+        "node_info": {
+          "$ref": "#/definitions/NodeStatusNodeSystemInfo"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "volumes_attached": {
+          "items": {
+            "$ref": "#/definitions/NodeStatusAttachedVolume"
+          },
+          "type": "array"
+        },
+        "volumes_in_use": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusAttachedVolume": {
+      "properties": {
+        "device_path": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusCapacity": {
+      "properties": {
+        "cpu": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "memory": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "pods": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "storage": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusContainerImage": {
+      "properties": {
+        "names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "size_bytes": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusNodeAddress": {
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NodeStatusNodeSystemInfo": {
+      "properties": {
+        "architecture": {
+          "type": "string"
+        },
+        "bootID": {
+          "type": "string"
+        },
+        "container_runtime_version": {
+          "type": "string"
+        },
+        "kernel_version": {
+          "type": "string"
+        },
+        "kube_proxy_version": {
+          "type": "string"
+        },
+        "kubelet_version": {
+          "type": "string"
+        },
+        "machineID": {
+          "type": "string"
+        },
+        "operating_system": {
+          "type": "string"
+        },
+        "os_image": {
+          "type": "string"
+        },
+        "systemUUID": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumeClaimPersistentVolumeClaimStatus": {
+      "properties": {
+        "access_modes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "capacity": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "phase": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumePersistentVolumeSpec": {
+      "properties": {
+        "access_modes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "capacity": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "claim_ref": {
+          "$ref": "#/definitions/v1alpha1ObjectReference"
+        },
+        "persistent_volume_reclaim_policy": {
+          "type": "string"
+        },
+        "persistent_volume_source": {
+          "$ref": "#/definitions/v1alpha1VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "PersistentVolumePersistentVolumeStatus": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PodAlertPodAlertSpec": {
+      "properties": {
+        "alert_interval": {
+          "type": "string"
+        },
+        "check": {
+          "title": "Icinga CheckCommand name\nValues are in\n   influx_query\n   pod_status\n   volume\n   kube_exec",
+          "type": "string"
+        },
+        "check_interval": {
+          "type": "string"
+        },
+        "pod_name": {
+          "type": "string"
+        },
+        "receivers": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1AlertReceiver"
+          },
+          "type": "array"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "PodPodStatus": {
+      "properties": {
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ResourceCondition"
+          },
+          "type": "array"
+        },
+        "hostIP": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "podIP": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "start_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "PodSpecContainer": {
+      "properties": {
+        "args": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "commands": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "env": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1EnvVar"
+          },
+          "type": "array"
+        },
+        "image": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "volume_mounts": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1VolumeMount"
+          },
+          "type": "array"
+        },
+        "working_dir": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PrometheusPrometheusSpec": {
+      "description": "Specification of the desired behavior of the Prometheus cluster.",
+      "properties": {
+        "alerting": {
+          "$ref": "#/definitions/v1alpha1AlertSpec",
+          "description": "Define details regarding alerting."
+        },
+        "base_image": {
+          "description": "Base image to use for a Prometheus deployment.",
+          "type": "string"
+        },
+        "external_labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "The labels to add to any time series or alerts when communicating with\nexternal systems (federation, remote storage, Alertmanager).",
+          "type": "object"
+        },
+        "external_url": {
+          "description": "The external URL the Prometheus instances will be available under. This is\nnecessary to generate correct URLs. This is necessary if Prometheus is not\nserved from root of a DNS name.",
+          "type": "string"
+        },
+        "image_pull_secrets": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1LocalObjectReference"
+          },
+          "title": "An optional list of references to secrets in the same namespace\nto use for pulling prometheus and alertmanager images from registries",
+          "type": "array"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Define which Nodes the Pods are scheduled on.",
+          "type": "object"
+        },
+        "paused": {
+          "description": "When a Prometheus deployment is paused, no actions except for deletion\nwill be performed on the underlying objects.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "replicas": {
+          "description": "Number of instances to deploy for a Prometheus deployment.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "retention": {
+          "description": "Time duration Prometheus shall retain data for.",
+          "type": "string"
+        },
+        "route_prefix": {
+          "description": "The route prefix Prometheus registers HTTP handlers for. This is useful,\nif using ExternalURL and a proxy is rewriting HTTP routes of a request,\nand the actual ExternalURL is still true, but the server serves requests\nunder a different route prefix. For example for use with `kubectl proxy`.",
+          "type": "string"
+        },
+        "rule_selector": {
+          "description": "A selector to select which ConfigMaps to mount for loading rule files from.",
+          "type": "string"
+        },
+        "secrets": {
+          "description": "Secrets is a list of Secrets in the same namespace as the Prometheus\nobject, which shall be mounted into the Prometheus Pods.\nThe Secrets are mounted into /etc/prometheus/secrets/<secret-name>.\nSecrets changes after initial creation of a Prometheus object are not\nreflected in the running Pods. To change the secrets mounted into the\nPrometheus Pods, the object must be deleted and recreated with the new list\nof secrets.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "service_account_name": {
+          "description": "ServiceAccountName is the name of the ServiceAccount to use to run the\nPrometheus Pods.",
+          "type": "string"
+        },
+        "service_monitor_selector": {
+          "description": "ServiceMonitors to be selected for target discovery.",
+          "type": "string"
+        },
+        "version": {
+          "description": "Version of Prometheus to be deployed.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PrometheusPrometheusStatus": {
+      "properties": {
+        "available_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "paused": {
+          "description": "Represents whether any actions on the underlaying managed objects are\nbeing performed. Only delete actions will be performed.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "replicas": {
+          "description": "Total number of non-terminated pods targeted by this Prometheus deployment\n(their labels match the selector).",
+          "format": "int32",
+          "type": "integer"
+        },
+        "unavailable_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "updated_replicas": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecAzureSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecGCSSpec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecLocalSpec": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "volumeSource": {
+          "$ref": "#/definitions/v1alpha1VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecS3Spec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ResticSpecSwiftSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ServiceMonitorEndpoint": {
+      "description": "Endpoint defines a scrapeable endpoint serving Prometheus metrics.",
+      "properties": {
+        "interval": {
+          "title": "Interval at which metrics should be scraped",
+          "type": "string"
+        },
+        "path": {
+          "description": "HTTP path to scrape for metrics.",
+          "type": "string"
+        },
+        "port": {
+          "description": "Name of the service port this endpoint refers to. Mutually exclusive with targetPort.",
+          "type": "string"
+        },
+        "scheme": {
+          "description": "HTTP scheme to use for scraping.",
+          "type": "string"
+        },
+        "target_port": {
+          "description": "Name or number of the target port of the endpoint. Mutually exclusive with port.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ServiceMonitorNamespaceSelector": {
+      "properties": {
+        "any": {
+          "description": "Boolean describing whether all namespaces are selected in contrast to a\nlist restricting them.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "match_names": {
+          "description": "List of namespace names.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ServiceMonitorServiceMonitorSpec": {
+      "description": "ServiceMonitorSpec contains specification parameters for a ServiceMonitor.",
+      "properties": {
+        "endpoints": {
+          "items": {
+            "$ref": "#/definitions/ServiceMonitorEndpoint"
+          },
+          "type": "array"
+        },
+        "job_label": {
+          "description": "The label to use to retrieve the job name from.",
+          "type": "string"
+        },
+        "namespace_selector": {
+          "$ref": "#/definitions/ServiceMonitorNamespaceSelector",
+          "description": "Selector to select which namespaces the Endpoints objects are discovered from."
+        },
+        "selector": {
+          "description": "Selector to select Endpoints objects.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ServiceStatusLoadBalancerIngress": {
+      "properties": {
+        "IP": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecBackend": {
+      "properties": {
+        "Azure": {
+          "$ref": "#/definitions/ResticSpecAzureSpec"
+        },
+        "GCS": {
+          "$ref": "#/definitions/ResticSpecGCSSpec"
+        },
+        "Local": {
+          "$ref": "#/definitions/ResticSpecLocalSpec"
+        },
+        "S3": {
+          "$ref": "#/definitions/ResticSpecS3Spec"
+        },
+        "Swift": {
+          "$ref": "#/definitions/ResticSpecSwiftSpec"
+        },
+        "storage_secret_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecDeploymentStrategy": {
+      "properties": {
+        "rolling_update": {
+          "$ref": "#/definitions/SpecRollingUpdateDeployment"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecFileGroup": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "retention_policy": {
+          "$ref": "#/definitions/SpecRetentionPolicy"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SpecPort": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "node_port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "target_port": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SpecRetentionPolicy": {
+      "properties": {
+        "dry_run": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "keep_daily": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_hourly": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_last": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_monthly": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "keep_weekly": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "keep_yearly": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "prune": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "SpecRollbackConfig": {
+      "properties": {
+        "revision": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "SpecRollingUpdateDeployment": {
+      "properties": {
+        "max_surge": {
+          "type": "string"
+        },
+        "max_unavailable": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "StatusACMECertificateDetails": {
+      "properties": {
+        "account_ref": {
+          "type": "string"
+        },
+        "certURL": {
+          "type": "string"
+        },
+        "cert_stableURL": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dtypesVoidResponse": {
+      "type": "object"
+    },
+    "plowv1alpha1Event": {
+      "properties": {
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "first_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/v1alpha1EventSource"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "plowv1alpha1ResourceRequirements": {
+      "properties": {
+        "limits": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "requests": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1AWSElasticBlockStoreVolumeSource": {
+      "description": "Represents a Persistent Disk resource in AWS.\n\nAn AWS EBS disk must exist before mounting to a container. The disk\nmust also be in the same AWS zone as the kubelet. An AWS EBS disk\ncan only be mounted as read/write once. AWS EBS volumes support\nownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "partition": {
+          "description": "The partition in the volume that you want to mount.\nIf omitted, the default is to mount by volume name.\nExamples: For volume /dev/sda1, you specify the partition as \"1\".\nSimilarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).",
+          "format": "int32",
+          "type": "integer"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\".\nIf omitted, the default is \"false\".\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore",
+          "type": "boolean"
+        },
+        "volumeID": {
+          "title": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume).\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#awselasticblockstore",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1AlertReceiver": {
+      "properties": {
+        "notifier": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "to": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1AlertSpec": {
+      "description": "AlertingSpec defines parameters for alerting configuration of Prometheus servers.",
+      "properties": {
+        "alertmanager": {
+          "description": "AlertmanagerEndpoints Prometheus should fire alerts against.",
+          "items": {
+            "$ref": "#/definitions/v1alpha1PrometheusAlertmanagerEndpoint"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1AzureDiskVolumeSource": {
+      "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
+      "properties": {
+        "cachingMode": {
+          "description": "Host Caching mode: None, Read Only, Read Write.",
+          "type": "string"
+        },
+        "diskName": {
+          "title": "The Name of the data disk in the blob storage",
+          "type": "string"
+        },
+        "diskURI": {
+          "title": "The URI the data disk in the blob storage",
+          "type": "string"
+        },
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+          "type": "string"
+        },
+        "readOnly": {
+          "description": "Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1AzureFileVolumeSource": {
+      "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
+      "properties": {
+        "readOnly": {
+          "description": "Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "secretName": {
+          "title": "the name of secret that contains Azure Storage Account Name and Key",
+          "type": "string"
+        },
+        "shareName": {
+          "title": "Share Name",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1BackupScheduleSpec": {
+      "properties": {
+        "cron_expression": {
+          "type": "string"
+        },
+        "snapshot_storage_spec": {
+          "$ref": "#/definitions/v1alpha1SnapshotStorageSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CephFSVolumeSource": {
+      "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod\nCephfs volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "monitors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required: Monitors is a collection of Ceph monitors\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "array"
+        },
+        "path": {
+          "title": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "boolean"
+        },
+        "secretFile": {
+          "title": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "string"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1alpha1ObjectReference",
+          "title": "Optional: SecretRef is reference to the authentication secret for User, default is empty.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it"
+        },
+        "user": {
+          "title": "Optional: User is the rados user name, default is admin\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/cephfs/README.md#how-to-use-it",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Certificate": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1CertificateSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1CertificateStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CertificateSpec": {
+      "properties": {
+        "ACME_serverURL": {
+          "description": "Provides Custom acme server url to issue certificates. If empty it\nuses let's encrypt servers.",
+          "type": "string"
+        },
+        "ACME_user_secret_name": {
+          "type": "string"
+        },
+        "HTTP_provider_ingress_reference": {
+          "$ref": "#/definitions/v1alpha1ObjectReference"
+        },
+        "domains": {
+          "description": "Obtain a single certificate for all the domains. The first Domain provided wiil\nbe counted as Name and other domains will be in SANs.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "email": {
+          "type": "string"
+        },
+        "provider": {
+          "title": "Provider to resolve challange. Valid Providers are\n\"http\":\n\"cloudflare\":\n\"digitalocean\":\n\"dnsimple\":\n\"dyn\":\n\"gandi\":\n\"googlecloud\":\n\"linode\":\n\"namecheap\":\n\"ovh\":\n\"pdns\":\n\"rfc2136\":\n\"route53\":\n\"vultr\":",
+          "type": "string"
+        },
+        "provider_credential_secret_name": {
+          "description": "http\nHTTP Provider needs an Ingress or ExtendedIngress reference in HTTP_provider_ingress_reference.\n\ncloudflare\nCLOUDFLARE_EMAIL: The email of the cloudflare user\nCLOUDFLARE_API_KEY: The API key corresponding to the email\n\ndigitalocean\nDO_AUTH_TOKEN: The digital ocean authorization token\n\ndnsimple\nDNSIMPLE_EMAIL: The email fo the DNSimple user\nDNSIMPLE_API_KEY: The API key corresponding to the email\n\ndnsmadeeasy\nDNSMADEEASY_API_KEY: The API key for DNS Made Easy\nDNSMADEEASY_API_SECRET: The api secret corresponding with the API key\nDNSMADEEASY_SANDBOX: A boolean flag, if set to true or 1, requests will be sent to the sandbox API\n\ndyn\nDYN_CUSTOMER_NAME: The customer name of the Dyn user\nDYN_USER_NAME: The user name of the Dyn user\nDYN_PASSWORD: The password of the Dyn user\n\ngandi\nGANDI_API_KEY: The API key for Gandi\n\ngooglecloud\nGCE_PROJECT: The name of the Google Cloud project to use\n\nlinode\nLINODE_API_KEY: API key for linode\n\nnamecheap\nNAMECHEAP_API_USER: The username of the namecheap user\nNAMECHEAP_API_KEY: The API key corresponding with the namecheap user\n\novh\nOVH_ENDPOINT: The URL of the API endpoint to use\nOVH_APPLICATION_KEY: The application key\nOVH_APPLICATION_SECRET: The secret corresponding to the application key\nOVH_CONSUMER_KEY: The consumer key\n\npdns\nPDNS_API_KEY: The API key to use\n\nrfc2136\nRFC2136_NAMESERVER: The network address of the provider, in the form of \"host\" or \"host:port\"\nRFC2136_TSIG_ALGORITHM: The algorithm to use for TSIG authentication.\nRFC2136_TSIG_KEY: The key to use for TSIG authentication.\nRFC2136_TSIG_SECRET: The secret to use for TSIG authentication.\n\nroute53\nAWS_ACCESS_KEY_ID: The access key ID\nAWS_SECRET_ACCESS_KEY: The secret corresponding to the access key\n\nvultr\nVULTR_API_KEY: The API key to use",
+          "title": "ProviderCredentialSecret Must Contain Secrets for that specific Providers.\nAll the Key names for DNS providers needs to maintain the following formate:",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CertificateStatus": {
+      "properties": {
+        "ACME_user_secret_name": {
+          "type": "string"
+        },
+        "certificate_obtained": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "details": {
+          "$ref": "#/definitions/StatusACMECertificateDetails"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CinderVolumeSource": {
+      "description": "Represents a cinder volume resource in Openstack.\nA Cinder volume must exist before mounting to a container.\nThe volume must also be in the same region as the kubelet.\nCinder volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
+          "type": "boolean"
+        },
+        "volumeID": {
+          "title": "volume id used to identify the volume in cinder\nMore info: http://releases.k8s.io/release-1.4/examples/mysql-cinder-pd/README.md",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterAlert": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/ClusterAlertClusterAlertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterRole": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Rule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ClusterRoleBinding": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "role_ref": {
+          "$ref": "#/definitions/v1alpha1ObjectReference"
+        },
+        "subjects": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Subject"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ConfigMap": {
+      "properties": {
+        "data": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ConfigMapEditRequest": {
+      "properties": {
+        "add": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "deleted": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "update": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ConfigMapKeySelector": {
+      "description": "Selects a key from a ConfigMap.",
+      "properties": {
+        "key": {
+          "description": "The key to select.",
+          "type": "string"
+        },
+        "local_object_reference": {
+          "$ref": "#/definitions/v1alpha1ObjectReference",
+          "description": "The ConfigMap to select from."
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ConfigMapVolumeSource": {
+      "properties": {
+        "defaultMode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on created files by default. Must be a\nvalue between 0 and 0777. Defaults to 0644.\nDirectories within the path are not affected by this setting.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "items": {
+          "$ref": "#/definitions/v1alpha1KeyToPath",
+          "title": "If unspecified, each key-value pair in the Data field of the referenced\nConfigMap will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the ConfigMap,\nthe volume setup will error unless it is marked optional. Paths must be\nrelative and may not contain the '..' path or start with '..'.\n+optional"
+        },
+        "localObjectReference": {
+          "$ref": "#/definitions/v1alpha1LocalObjectReference"
+        },
+        "optional": {
+          "format": "boolean",
+          "title": "Specify whether the ConfigMap or it's keys must be defined\n+optional",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CopyResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "destination": {
+          "$ref": "#/definitions/v1alpha1KubeObject"
+        },
+        "source": {
+          "$ref": "#/definitions/v1alpha1KubeObject"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CreateResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1alpha1Raw"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CronJob": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1CronJobSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1CronJobStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CronJobSpec": {
+      "properties": {
+        "concurrency_policy": {
+          "type": "string"
+        },
+        "schedule": {
+          "type": "string"
+        },
+        "starting_deadline_seconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "suspend": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "template": {
+          "$ref": "#/definitions/v1alpha1JobSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1CronJobStatus": {
+      "properties": {
+        "active": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ObjectReference"
+          },
+          "type": "array"
+        },
+        "last_schedule_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DaemonSet": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1DaemonSetSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1DaemonSetStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DaemonSetSpec": {
+      "properties": {
+        "pod_template": {
+          "$ref": "#/definitions/v1alpha1PodSpec"
+        },
+        "selector": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DaemonSetStatus": {
+      "properties": {
+        "current_number_scheduled": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "desired_number_scheduled": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "number_misscheduled": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DeleteResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Deployment": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1DeploymentSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/DeploymentDeploymentStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DeploymentSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "min_ready_seconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "paused": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1alpha1PodSpec"
+        },
+        "progress_deadline_seconds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "revision_history_limit": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rollback_to": {
+          "$ref": "#/definitions/SpecRollbackConfig"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "strategy": {
+          "$ref": "#/definitions/SpecDeploymentStrategy"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DescribeResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "include_metrics": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "raw": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DescribeResourceResponse": {
+      "properties": {
+        "resource": {
+          "$ref": "#/definitions/v1alpha1KubeResource"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Disk": {
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "iops": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "persistent_volume": {
+          "$ref": "#/definitions/v1alpha1PersistentVolume"
+        },
+        "persistent_volume_claim": {
+          "$ref": "#/definitions/v1alpha1PersistentVolumeClaim"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskCreateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "disk_type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskDescribeResponse": {
+      "properties": {
+        "disk": {
+          "$ref": "#/definitions/v1alpha1Disk"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DiskListResponse": {
+      "properties": {
+        "disks": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Disk"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DormantDatabase": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1DormantDatabaseSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1DormantDatabaseStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DormantDatabaseSpec": {
+      "properties": {
+        "origin": {
+          "$ref": "#/definitions/v1alpha1Origin"
+        },
+        "resume": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "wipe_out": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DormantDatabaseStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "pausing_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "wipe_out_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1DownwardAPIVolumeFile": {
+      "properties": {
+        "fieldRef": {
+          "$ref": "#/definitions/v1alpha1ObjectFieldSelector",
+          "title": "Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.\n+optional"
+        },
+        "mode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on this file, must be a value between 0\nand 0777. If not specified, the volume defaultMode will be used.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "path": {
+          "title": "Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'",
+          "type": "string"
+        },
+        "resourceFieldRef": {
+          "$ref": "#/definitions/v1alpha1ResourceFieldSelector",
+          "title": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.\n+optional"
+        }
+      },
+      "title": "DownwardAPIVolumeFile represents information to create the file containing the pod field",
+      "type": "object"
+    },
+    "v1alpha1DownwardAPIVolumeSource": {
+      "description": "DownwardAPIVolumeSource represents a volume containing downward API info.\nDownward API volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "defaultMode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on created files by default. Must be a\nvalue between 0 and 0777. Defaults to 0644.\nDirectories within the path are not affected by this setting.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1DownwardAPIVolumeFile"
+          },
+          "title": "Items is a list of downward API volume file\n+optional",
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Elasticsearch": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1ElasticsearchSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1ElasticsearchStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ElasticsearchSpec": {
+      "properties": {
+        "backup_schedule": {
+          "$ref": "#/definitions/v1alpha1BackupScheduleSpec"
+        },
+        "do_not_pause": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "init": {
+          "$ref": "#/definitions/v1alpha1InitSpec"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "storage": {
+          "$ref": "#/definitions/v1alpha1PersistentVolumeClaimSpec"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ElasticsearchStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1EmptyDirVolumeSource": {
+      "description": "Represents an empty directory for a pod.\nEmpty directory volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "medium": {
+          "title": "What type of storage medium should back this directory.\nThe default is \"\" which means to use the node's default medium.\nMust be an empty string (default) or Memory.\nMore info: http://kubernetes.io/docs/user-guide/volumes#emptydir",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1EnvVar": {
+      "properties": {
+        "name": {
+          "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+          "type": "string"
+        },
+        "value": {
+          "title": "Variable references $(VAR_NAME) are expanded\nusing the previous defined environment variables in the container and\nany service environment variables. If a variable cannot be resolved,\nthe reference in the input string will be unchanged. The $(VAR_NAME)\nsyntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped\nreferences will never be expanded, regardless of whether the variable\nexists or not.\nDefaults to \"\".\n+optional",
+          "type": "string"
+        },
+        "value_from": {
+          "$ref": "#/definitions/v1alpha1EnvVarSource",
+          "title": "Source for the environment variable's value. Cannot be used if value is not empty.\n+optional"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1EnvVarSource": {
+      "description": "EnvVarSource represents a source for the value of an EnvVar.",
+      "properties": {
+        "config_map_key_ref": {
+          "$ref": "#/definitions/v1alpha1ConfigMapKeySelector",
+          "title": "Selects a key of a ConfigMap.\n+optional"
+        },
+        "field_ref": {
+          "$ref": "#/definitions/v1alpha1ObjectFieldSelector",
+          "title": "Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations,\nspec.nodeName, spec.serviceAccountName, status.podIP.\n+optional"
+        },
+        "resource_field_ref": {
+          "$ref": "#/definitions/v1alpha1ResourceFieldSelector",
+          "title": "Selects a resource of the container: only resources limits and requests\n(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.\n+optional"
+        },
+        "secret_key_ref": {
+          "$ref": "#/definitions/v1alpha1SecretKeySelector",
+          "title": "Selects a key of a secret in the pod's namespace\n+optional"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1EventSource": {
+      "properties": {
+        "component": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1FCVolumeSource": {
+      "description": "Represents a Fibre Channel volume.\nFibre Channel volumes can only be mounted as read/write once.\nFibre Channel volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "lun": {
+          "format": "int32",
+          "title": "Required: FC target lun number",
+          "type": "integer"
+        },
+        "readOnly": {
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "targetWWNs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required: FC target worldwide names (WWNs)",
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1FlexVolumeSource": {
+      "description": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an alpha feature and may change in future.",
+      "properties": {
+        "driver": {
+          "description": "Driver is the name of the driver to use for this volume.",
+          "type": "string"
+        },
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script.",
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Optional: Extra command options if any.",
+          "type": "object"
+        },
+        "readOnly": {
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force\nthe ReadOnly setting in VolumeMounts.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1alpha1ObjectReference",
+          "description": "Optional: SecretRef is reference to the secret object containing\nsensitive information to pass to the plugin scripts. This may be\nempty if no secret object is specified. If the secret object\ncontains more than one secret, all secrets are passed to the plugin\nscripts."
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1FlockerVolumeSource": {
+      "description": "Represents a Flocker volume mounted by the Flocker agent.\nFlocker volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "datasetName": {
+          "title": "Required: the volume name. This is going to be store on metadata -> name on the payload for Flocker",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1GCEPersistentDiskVolumeSource": {
+      "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must\nalso be in the same GCE project and zone as the kubelet. A GCE PD\ncan only be mounted as read/write once or read-only many times. GCE\nPDs support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "partition": {
+          "format": "int32",
+          "title": "The partition in the volume that you want to mount.\nIf omitted, the default is to mount by volume name.\nExamples: For volume /dev/sda1, you specify the partition as \"1\".\nSimilarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk",
+          "type": "integer"
+        },
+        "pdName": {
+          "title": "Unique name of the PD resource in GCE. Used to identify the disk in GCE.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#gcepersistentdisk",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1GitRepoVolumeSource": {
+      "description": "Represents a volume that is populated with the contents of a git repository.\nGit repo volumes do not support ownership management.\nGit repo volumes support SELinux relabeling.",
+      "properties": {
+        "directory": {
+          "description": "Target directory name.\nMust not contain or start with '..'.  If '.' is supplied, the volume directory will be the\ngit repository.  Otherwise, if specified, the volume will contain the git repository in\nthe subdirectory with the given name.",
+          "type": "string"
+        },
+        "repository": {
+          "title": "Repository URL",
+          "type": "string"
+        },
+        "revision": {
+          "description": "Commit hash for the specified revision.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1GlusterfsVolumeSource": {
+      "description": "Represents a Glusterfs mount that lasts the lifetime of a pod.\nGlusterfs volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "endpoints": {
+          "title": "EndpointsName is the endpoint name that details Glusterfs topology.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path is the Glusterfs volume path.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/glusterfs/README.md#create-a-pod",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1HostPathVolumeSource": {
+      "description": "Represents a host path mapped into a pod.\nHost path volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "path": {
+          "title": "Path of the directory on the host.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#hostpath",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ISCSIVolumeSource": {
+      "description": "Represents an ISCSI disk.\nISCSI volumes can only be mounted as read/write once.\nISCSI volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#iscsi\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "iqn": {
+          "description": "Target iSCSI Qualified Name.",
+          "type": "string"
+        },
+        "iscsiInterface": {
+          "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport.",
+          "type": "string"
+        },
+        "lun": {
+          "description": "iSCSI target lun number.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "readOnly": {
+          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "targetPortal": {
+          "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port\nis other than default (typically TCP ports 860 and 3260).",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Ingress": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1IngressSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1IngressStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1IngressLoadBalancerIngress": {
+      "properties": {
+        "IP": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1IngressSpec": {
+      "properties": {
+        "TLS": {
+          "items": {
+            "$ref": "#/definitions/IngressIngressTLS"
+          },
+          "type": "array"
+        },
+        "backend": {
+          "$ref": "#/definitions/IngressHTTPIngressBackend"
+        },
+        "load_balancer_source_ranges": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "$ref": "#/definitions/plowv1alpha1ResourceRequirements"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/IngressIngressRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1IngressStatus": {
+      "properties": {
+        "load_balancer": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1IngressLoadBalancerIngress"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1InitSpec": {
+      "properties": {
+        "script_source": {
+          "$ref": "#/definitions/v1alpha1ScriptSourceSpec"
+        },
+        "snapshot_source": {
+          "$ref": "#/definitions/v1alpha1SnapshotSourceSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Job": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1JobSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1JobStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1JobSpec": {
+      "properties": {
+        "active_deadline_seconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "completions": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "parallelism": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "template": {
+          "$ref": "#/definitions/v1alpha1PodSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1JobStatus": {
+      "properties": {
+        "active": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "completion_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1ResourceCondition"
+          },
+          "type": "array"
+        },
+        "failed": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "start_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "succeeded": {
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1KeyToPath": {
+      "description": "Maps a string key to a path within a volume.",
+      "properties": {
+        "key": {
+          "description": "The key to project.",
+          "type": "string"
+        },
+        "mode": {
+          "format": "int32",
+          "title": "Optional: mode bits to use on this file, must be a value between 0\nand 0777. If not specified, the volume defaultMode will be used.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.\n+optional",
+          "type": "integer"
+        },
+        "path": {
+          "description": "The relative path of the file to map the key to.\nMay not be an absolute path.\nMay not contain the path element '..'.\nMay not start with the string '..'.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1KubeObject": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1KubeResource": {
+      "description": "TODO: (@sadlil): when kubernetes moves to protobuf completely import fileds from there.",
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "certificate": {
+          "$ref": "#/definitions/v1alpha1Certificate"
+        },
+        "cluster_alert": {
+          "$ref": "#/definitions/v1alpha1ClusterAlert"
+        },
+        "cluster_role": {
+          "$ref": "#/definitions/v1alpha1ClusterRole"
+        },
+        "cluster_role_binding": {
+          "$ref": "#/definitions/v1alpha1ClusterRoleBinding"
+        },
+        "config_map": {
+          "$ref": "#/definitions/v1alpha1ConfigMap"
+        },
+        "cron_job": {
+          "$ref": "#/definitions/v1alpha1CronJob"
+        },
+        "daemon_set": {
+          "$ref": "#/definitions/v1alpha1DaemonSet"
+        },
+        "deployment": {
+          "$ref": "#/definitions/v1alpha1Deployment"
+        },
+        "dormant_database": {
+          "$ref": "#/definitions/v1alpha1DormantDatabase"
+        },
+        "elasticsearch": {
+          "$ref": "#/definitions/v1alpha1Elasticsearch"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/definitions/plowv1alpha1Event"
+          },
+          "type": "array"
+        },
+        "ingress": {
+          "$ref": "#/definitions/v1alpha1Ingress"
+        },
+        "job": {
+          "$ref": "#/definitions/v1alpha1Job"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "namespace": {
+          "$ref": "#/definitions/v1alpha1Namespace"
+        },
+        "node": {
+          "$ref": "#/definitions/v1alpha1Node"
+        },
+        "node_alert": {
+          "$ref": "#/definitions/v1alpha1NodeAlert"
+        },
+        "persistent_volume": {
+          "$ref": "#/definitions/v1alpha1PersistentVolume"
+        },
+        "persistent_volume_claim": {
+          "$ref": "#/definitions/v1alpha1PersistentVolumeClaim"
+        },
+        "pod": {
+          "$ref": "#/definitions/v1alpha1Pod"
+        },
+        "pod_alert": {
+          "$ref": "#/definitions/v1alpha1PodAlert"
+        },
+        "postgres": {
+          "$ref": "#/definitions/v1alpha1Postgres"
+        },
+        "prometheus": {
+          "$ref": "#/definitions/v1alpha1Prometheus"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1alpha1Raw"
+        },
+        "replica_set": {
+          "$ref": "#/definitions/v1alpha1ReplicaSet"
+        },
+        "replication_controller": {
+          "$ref": "#/definitions/v1alpha1ReplicationController"
+        },
+        "restic": {
+          "$ref": "#/definitions/v1alpha1Restic"
+        },
+        "role": {
+          "$ref": "#/definitions/v1alpha1Role"
+        },
+        "role_binding": {
+          "$ref": "#/definitions/v1alpha1RoleBinding"
+        },
+        "secret": {
+          "$ref": "#/definitions/v1alpha1Secret"
+        },
+        "service": {
+          "$ref": "#/definitions/v1alpha1Service"
+        },
+        "service_monitors": {
+          "$ref": "#/definitions/v1alpha1ServiceMonitor"
+        },
+        "snapshot": {
+          "$ref": "#/definitions/v1alpha1Snapshot"
+        },
+        "stateful_set": {
+          "$ref": "#/definitions/v1alpha1StatefulSet"
+        },
+        "storage_class": {
+          "$ref": "#/definitions/v1alpha1StorageClass"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1KubeResourceList": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "certificates": {
+          "$ref": "#/definitions/KubeResourceListCertificates"
+        },
+        "cluster_alerts": {
+          "$ref": "#/definitions/KubeResourceListClusterAlerts"
+        },
+        "cluster_role_bindings": {
+          "$ref": "#/definitions/KubeResourceListClusterRoleBindings"
+        },
+        "cluster_roles": {
+          "$ref": "#/definitions/KubeResourceListClusterRoles"
+        },
+        "config_maps": {
+          "$ref": "#/definitions/KubeResourceListConfigMaps"
+        },
+        "cron_jobs": {
+          "$ref": "#/definitions/KubeResourceListCronJobs"
+        },
+        "daemon_sets": {
+          "$ref": "#/definitions/KubeResourceListDaemonSets"
+        },
+        "deployments": {
+          "$ref": "#/definitions/KubeResourceListDeployments"
+        },
+        "dormant_databases": {
+          "$ref": "#/definitions/KubeResourceListDormantDatabases"
+        },
+        "elasticsearchs": {
+          "$ref": "#/definitions/KubeResourceListElasticsearches",
+          "description": "`elasticsearchs` is spelled incorrectly. This is intentional, since Kubernetes itself uses has a pluralization bug."
+        },
+        "events": {
+          "$ref": "#/definitions/KubeResourceListEvents"
+        },
+        "ingresses": {
+          "$ref": "#/definitions/KubeResourceListIngresses"
+        },
+        "jobs": {
+          "$ref": "#/definitions/KubeResourceListJobs"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "namespaces": {
+          "$ref": "#/definitions/KubeResourceListNamespaces"
+        },
+        "node_alerts": {
+          "$ref": "#/definitions/KubeResourceListNodeAlerts"
+        },
+        "nodes": {
+          "$ref": "#/definitions/KubeResourceListNodes"
+        },
+        "persistent_volume_claims": {
+          "$ref": "#/definitions/KubeResourceListPersistentVolumeClaims"
+        },
+        "persistent_volumes": {
+          "$ref": "#/definitions/KubeResourceListPersistentVolumes"
+        },
+        "pod_alerts": {
+          "$ref": "#/definitions/KubeResourceListPodAlerts"
+        },
+        "pods": {
+          "$ref": "#/definitions/KubeResourceListPods"
+        },
+        "postgreses": {
+          "$ref": "#/definitions/KubeResourceListPostgreses"
+        },
+        "prometheuses": {
+          "$ref": "#/definitions/KubeResourceListPrometheuses"
+        },
+        "replica_sets": {
+          "$ref": "#/definitions/KubeResourceListReplicaSets"
+        },
+        "replication_controllers": {
+          "$ref": "#/definitions/KubeResourceListReplicationControllers"
+        },
+        "restics": {
+          "$ref": "#/definitions/KubeResourceListRestics"
+        },
+        "role_bindings": {
+          "$ref": "#/definitions/KubeResourceListRoleBindings"
+        },
+        "roles": {
+          "$ref": "#/definitions/KubeResourceListRoles"
+        },
+        "secrets": {
+          "$ref": "#/definitions/KubeResourceListSecrets"
+        },
+        "service_monitors": {
+          "$ref": "#/definitions/KubeResourceListServiceMonitors"
+        },
+        "services": {
+          "$ref": "#/definitions/KubeResourceListServices"
+        },
+        "snapshots": {
+          "$ref": "#/definitions/KubeResourceListSnapshots"
+        },
+        "stateful_sets": {
+          "$ref": "#/definitions/KubeResourceListStatefulSets"
+        },
+        "storage_classes": {
+          "$ref": "#/definitions/KubeResourceListStorageClasses"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ListResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "include_metrics": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "selector": {
+          "title": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ListResourceResponse": {
+      "properties": {
+        "available_versions": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "preferred_version": {
+          "type": "string"
+        },
+        "resources": {
+          "$ref": "#/definitions/v1alpha1KubeResourceList"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1LocalObjectReference": {
+      "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+      "properties": {
+        "name": {
+          "title": "Name of the referent.\nMore info: http://kubernetes.io/docs/user-guide/identifiers#names\nTODO: Add other useful fields. apiVersion, kind, uid?\n+optional",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Meta": {
+      "properties": {
+        "annotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "creation_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "generation": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "resource_version": {
+          "type": "string"
+        },
+        "self_link": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Metrics": {
+      "properties": {
+        "cpu_usage": {
+          "items": {
+            "$ref": "#/definitions/MetricsDataPoint"
+          },
+          "type": "array"
+        },
+        "memory_usage": {
+          "items": {
+            "$ref": "#/definitions/MetricsDataPoint"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1NFSVolumeSource": {
+      "description": "Represents an NFS mount that lasts the lifetime of a pod.\nNFS volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "path": {
+          "title": "Path that is exported by the NFS server.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force\nthe NFS export to be mounted with read-only permissions.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
+          "type": "boolean"
+        },
+        "server": {
+          "title": "Server is the hostname or IP address of the NFS server.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#nfs",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Namespace": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/NamespaceNamespaceSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1NamespaceStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1NamespaceStatus": {
+      "properties": {
+        "phase": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Node": {
+      "properties": {
+        "is_master": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "metrics": {
+          "$ref": "#/definitions/v1alpha1Metrics"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1NodeSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/NodeNodeStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1NodeAlert": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/NodeAlertNodeAlertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1NodeSpec": {
+      "properties": {
+        "external_id": {
+          "type": "string"
+        },
+        "podCIDR": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "unschedulable": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ObjectFieldSelector": {
+      "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
+      "properties": {
+        "api_version": {
+          "title": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".\n+optional",
+          "type": "string"
+        },
+        "field_path": {
+          "description": "Path of the field to select in the specified API version.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ObjectReference": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "resource_version": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Origin": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1OriginSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1OriginSpec": {
+      "properties": {
+        "elasticsearch": {
+          "$ref": "#/definitions/v1alpha1ElasticsearchSpec"
+        },
+        "postgres": {
+          "$ref": "#/definitions/v1alpha1PostgresSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolume": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/PersistentVolumePersistentVolumeSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/PersistentVolumePersistentVolumeStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaim": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1PersistentVolumeClaimSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/PersistentVolumeClaimPersistentVolumeClaimStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaimRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaimSpec": {
+      "properties": {
+        "access_modes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "$ref": "#/definitions/v1alpha1PersistentVolumeClaimSpecResourceRequirements"
+        },
+        "storage_class_name": {
+          "type": "string"
+        },
+        "volume_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaimSpecResourceRequirements": {
+      "properties": {
+        "limits": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "requests": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaimUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeClaimVolumeSource": {
+      "description": "PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace.\nThis volume finds the bound PV and mounts that volume for the pod. A\nPersistentVolumeClaimVolumeSource is, essentially, a wrapper around another\ntype of volume that is owned by someone else (the system).",
+      "properties": {
+        "claimName": {
+          "title": "ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume.\nMore info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "Will force the ReadOnly setting in VolumeMounts.\nDefault false.\n+optional",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        },
+        "size_gb": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PersistentVolumeUnRegisterRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PhotonPersistentDiskVolumeSource": {
+      "description": "Represents a Photon Controller persistent disk resource.",
+      "properties": {
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+          "type": "string"
+        },
+        "pdID": {
+          "title": "ID that identifies Photon Controller persistent disk",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Pod": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "metrics": {
+          "$ref": "#/definitions/v1alpha1Metrics"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1PodSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/PodPodStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PodAlert": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/PodAlertPodAlertSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PodSpec": {
+      "properties": {
+        "containers": {
+          "items": {
+            "$ref": "#/definitions/PodSpecContainer"
+          },
+          "type": "array"
+        },
+        "image_pull_secrets": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "node_name": {
+          "type": "string"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "service_account_name": {
+          "type": "string"
+        },
+        "volumes": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Volume"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Postgres": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1PostgresSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1PostgresStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PostgresSpec": {
+      "properties": {
+        "backup_schedule": {
+          "$ref": "#/definitions/v1alpha1BackupScheduleSpec"
+        },
+        "database_secret": {
+          "$ref": "#/definitions/v1alpha1SecretVolumeSource"
+        },
+        "do_not_pause": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "init": {
+          "$ref": "#/definitions/v1alpha1InitSpec"
+        },
+        "node_selector": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "storage": {
+          "$ref": "#/definitions/v1alpha1PersistentVolumeClaimSpec"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PostgresStatus": {
+      "properties": {
+        "creation_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Prometheus": {
+      "description": "Prometheus defines a Prometheus deployment.",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/PrometheusPrometheusSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/PrometheusPrometheusStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1PrometheusAlertmanagerEndpoint": {
+      "description": "AlertmanagerEndpoints defines a selection of a single Endpoints object\ncontaining alertmanager IPs to fire alerts against.",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "path_prefix": {
+          "type": "string"
+        },
+        "port": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "scheme": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1QuobyteVolumeSource": {
+      "description": "Represents a Quobyte mount that lasts the lifetime of a pod.\nQuobyte volumes do not support ownership management or SELinux relabeling.",
+      "properties": {
+        "group": {
+          "title": "Group to map volume access to\nDefault is no group",
+          "type": "string"
+        },
+        "readOnly": {
+          "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions.\nDefaults to false.",
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "registry": {
+          "title": "Registry represents a single or multiple Quobyte Registry services\nspecified as a string as host:port pair (multiple entries are separated with commas)\nwhich acts as the central registry for volumes",
+          "type": "string"
+        },
+        "user": {
+          "title": "User to map volume access to\nDefaults to serivceaccount user",
+          "type": "string"
+        },
+        "volume": {
+          "description": "Volume is a string that references an already created Quobyte volume by name.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1RBDVolumeSource": {
+      "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod.\nRBD volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "fsType": {
+          "title": "Filesystem type of the volume that you want to mount.\nTip: Ensure that the filesystem type is supported by the host operating system.\nExamples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.\nMore info: http://releases.k8s.io/release-1.4/docs/user-guide/volumes.md#rbd\nTODO: how do we prevent errors in the filesystem from compromising the machine",
+          "type": "string"
+        },
+        "image": {
+          "title": "The rados image name.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "string"
+        },
+        "keyring": {
+          "title": "Keyring is the path to key ring for RBDUser.\nDefault is /etc/ceph/keyring.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "string"
+        },
+        "monitors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "A collection of Ceph monitors.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "array"
+        },
+        "pool": {
+          "description": "The rados pool name.\nDefault is rbd.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it.",
+          "type": "string"
+        },
+        "readOnly": {
+          "format": "boolean",
+          "title": "ReadOnly here will force the ReadOnly setting in VolumeMounts.\nDefaults to false.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "boolean"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/v1alpha1ObjectReference",
+          "title": "SecretRef is name of the authentication secret for RBDUser. If provided\noverrides keyring.\nDefault is nil.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it"
+        },
+        "user": {
+          "title": "The rados user name.\nDefault is admin.\nMore info: http://releases.k8s.io/release-1.4/examples/volumes/rbd/README.md#how-to-use-it",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Raw": {
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReplicaSet": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1ReplicaSetSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1ReplicaSetStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReplicaSetSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1alpha1PodSpec"
+        },
+        "selector": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReplicaSetStatus": {
+      "properties": {
+        "current_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReplicationController": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1ReplicationControllerSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1ReplicationControllerStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReplicationControllerSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1alpha1PodSpec"
+        },
+        "selector": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReplicationControllerStatus": {
+      "properties": {
+        "current_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ResourceCondition": {
+      "properties": {
+        "last_heartbeat_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_transition_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ResourceFieldSelector": {
+      "properties": {
+        "container_name": {
+          "title": "Container name: required for volumes, optional for env vars\n+optional",
+          "type": "string"
+        },
+        "divisor": {
+          "title": "Specifies the output format of the exposed resources, defaults to \"1\"\n+optional",
+          "type": "string"
+        },
+        "resource": {
+          "title": "Required: resource to select",
+          "type": "string"
+        }
+      },
+      "title": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+      "type": "object"
+    },
+    "v1alpha1Restic": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1ResticSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1ResticStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ResticSpec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/SpecBackend"
+        },
+        "file_groups": {
+          "items": {
+            "$ref": "#/definitions/SpecFileGroup"
+          },
+          "type": "array"
+        },
+        "schedule": {
+          "type": "string"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "use_auto_prefix": {
+          "type": "string"
+        },
+        "volume_mounts": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1VolumeMount"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ResticStatus": {
+      "properties": {
+        "backup_count": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "first_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_backup_duration": {
+          "type": "string"
+        },
+        "last_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "last_successful_backup_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ReverseIndexResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "targetType": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Role": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Rule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1RoleBinding": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "role_ref": {
+          "$ref": "#/definitions/v1alpha1ObjectReference"
+        },
+        "subjects": {
+          "items": {
+            "$ref": "#/definitions/v1alpha1Subject"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Rule": {
+      "properties": {
+        "api_groups": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "non_resource_urls": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resource_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "verbs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ScriptSourceSpec": {
+      "properties": {
+        "script_path": {
+          "type": "string"
+        },
+        "volume_source": {
+          "$ref": "#/definitions/v1alpha1VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Secret": {
+      "properties": {
+        "data": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SecretEditRequest": {
+      "properties": {
+        "add": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "deleted": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "update": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SecretKeySelector": {
+      "description": "SecretKeySelector selects a key of a Secret.",
+      "properties": {
+        "key": {
+          "description": "The key of the secret to select from.  Must be a valid secret key.",
+          "type": "string"
+        },
+        "local_object_reference": {
+          "$ref": "#/definitions/v1alpha1ObjectReference",
+          "description": "The name of the secret in the pod's namespace to select from."
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SecretVolumeSource": {
+      "description": "Adapts a Secret into a volume.\n\nThe contents of the target Secret's Data field will be presented in a volume\nas files using the keys in the Data field as the file names.\nSecret volumes support ownership management and SELinux relabeling.",
+      "properties": {
+        "defaultMode": {
+          "description": "Optional: mode bits to use on created files by default. Must be a\nvalue between 0 and 0777. Defaults to 0644.\nDirectories within the path are not affected by this setting.\nThis might be in conflict with other options that affect the file\nmode, like fsGroup, and the result can be other mode bits set.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "items": {
+          "description": "If unspecified, each key-value pair in the Data field of the referenced\nSecret will be projected into the volume as a file whose name is the\nkey and content is the value. If specified, the listed keys will be\nprojected into the specified paths, and unlisted keys will not be\npresent. If a key is specified which is not present in the Secret,\nthe volume setup will error unless it is marked optional. Paths must be\nrelative and may not contain the '..' path or start with '..'.",
+          "items": {
+            "$ref": "#/definitions/v1alpha1KeyToPath"
+          },
+          "type": "array"
+        },
+        "secretName": {
+          "title": "Name of the secret in the pod's namespace to use.\nMore info: http://kubernetes.io/docs/user-guide/volumes#secrets",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Service": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1ServiceSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1ServiceStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ServiceMonitor": {
+      "description": "ServiceMonitor defines monitoring for a set of services.",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/ServiceMonitorServiceMonitorSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ServiceSpec": {
+      "properties": {
+        "clusterIP": {
+          "type": "string"
+        },
+        "externalIPs": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "external_name": {
+          "type": "string"
+        },
+        "load_balancer_source_ranges": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "loadbalancerIP": {
+          "type": "string"
+        },
+        "ports": {
+          "items": {
+            "$ref": "#/definitions/SpecPort"
+          },
+          "type": "array"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "session_affinity": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1ServiceStatus": {
+      "properties": {
+        "loadbalancer_ingresses": {
+          "items": {
+            "$ref": "#/definitions/ServiceStatusLoadBalancerIngress"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Snapshot": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1SnapshotSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1SnapshotStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotSourceSpec": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotSpec": {
+      "properties": {
+        "database_name": {
+          "type": "string"
+        },
+        "snapshot_storage_spec": {
+          "$ref": "#/definitions/v1alpha1SnapshotStorageSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotStatus": {
+      "properties": {
+        "completion_time": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "start_time": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotStorageSpec": {
+      "properties": {
+        "Azure": {
+          "$ref": "#/definitions/v1alpha1SnapshotStorageSpecAzureSpec"
+        },
+        "GCS": {
+          "$ref": "#/definitions/v1alpha1SnapshotStorageSpecGCSSpec"
+        },
+        "Local": {
+          "$ref": "#/definitions/v1alpha1SnapshotStorageSpecLocalSpec"
+        },
+        "S3": {
+          "$ref": "#/definitions/v1alpha1SnapshotStorageSpecS3Spec"
+        },
+        "Swift": {
+          "$ref": "#/definitions/v1alpha1SnapshotStorageSpecSwiftSpec"
+        },
+        "storage_secret_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotStorageSpecAzureSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotStorageSpecGCSSpec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotStorageSpecLocalSpec": {
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "volumeSource": {
+          "$ref": "#/definitions/v1alpha1VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotStorageSpecS3Spec": {
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1SnapshotStorageSpecSwiftSpec": {
+      "properties": {
+        "container": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1StatefulSet": {
+      "properties": {
+        "app": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1alpha1StatefulSetSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1alpha1StatefulSetStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1StatefulSetSpec": {
+      "properties": {
+        "desired_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pod_template": {
+          "$ref": "#/definitions/v1alpha1PodSpec"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "service_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1StatefulSetStatus": {
+      "properties": {
+        "current_replicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "observed_generation": {
+          "format": "int64",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1StorageClass": {
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/v1alpha1Meta"
+        },
+        "parameters": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "provisioner": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Subject": {
+      "properties": {
+        "api_group": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1UpdateResourceRequest": {
+      "properties": {
+        "api_version": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/v1alpha1Raw"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1Volume": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "volumeSource": {
+          "$ref": "#/definitions/v1alpha1VolumeSource"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1VolumeMount": {
+      "properties": {
+        "mount_path": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "read_only": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1VolumeSource": {
+      "description": "Represents the source of a volume to mount.\nOnly one of its members may be specified.",
+      "properties": {
+        "awsElasticBlockStore": {
+          "$ref": "#/definitions/v1alpha1AWSElasticBlockStoreVolumeSource",
+          "title": "AWSElasticBlockStore represents an AWS Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore\n+optional"
+        },
+        "azureDisk": {
+          "$ref": "#/definitions/v1alpha1AzureDiskVolumeSource",
+          "title": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.\n+optional"
+        },
+        "azureFile": {
+          "$ref": "#/definitions/v1alpha1AzureFileVolumeSource",
+          "title": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.\n+optional"
+        },
+        "cephfs": {
+          "$ref": "#/definitions/v1alpha1CephFSVolumeSource",
+          "title": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime\n+optional"
+        },
+        "cinder": {
+          "$ref": "#/definitions/v1alpha1CinderVolumeSource",
+          "title": "Cinder represents a cinder volume attached and mounted on kubelets host machine\nMore info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md\n+optional"
+        },
+        "configMap": {
+          "$ref": "#/definitions/v1alpha1ConfigMapVolumeSource",
+          "title": "ConfigMap represents a configMap that should populate this volume\n+optional"
+        },
+        "downwardAPI": {
+          "$ref": "#/definitions/v1alpha1DownwardAPIVolumeSource",
+          "title": "DownwardAPI represents downward API about the pod that should populate this volume\n+optional"
+        },
+        "emptyDir": {
+          "$ref": "#/definitions/v1alpha1EmptyDirVolumeSource",
+          "title": "EmptyDir represents a temporary directory that shares a pod's lifetime.\nMore info: http://kubernetes.io/docs/user-guide/volumes#emptydir\n+optional"
+        },
+        "fc": {
+          "$ref": "#/definitions/v1alpha1FCVolumeSource",
+          "title": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.\n+optional"
+        },
+        "flexVolume": {
+          "$ref": "#/definitions/v1alpha1FlexVolumeSource",
+          "title": "FlexVolume represents a generic volume resource that is\nprovisioned/attached using an exec based plugin. This is an\nalpha feature and may change in future.\n+optional"
+        },
+        "flocker": {
+          "$ref": "#/definitions/v1alpha1FlockerVolumeSource",
+          "title": "Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running\n+optional"
+        },
+        "gcePersistentDisk": {
+          "$ref": "#/definitions/v1alpha1GCEPersistentDiskVolumeSource",
+          "title": "GCEPersistentDisk represents a GCE Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk\n+optional"
+        },
+        "gitRepo": {
+          "$ref": "#/definitions/v1alpha1GitRepoVolumeSource",
+          "title": "GitRepo represents a git repository at a particular revision.\n+optional"
+        },
+        "glusterfs": {
+          "$ref": "#/definitions/v1alpha1GlusterfsVolumeSource",
+          "title": "Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md\n+optional"
+        },
+        "hostPath": {
+          "$ref": "#/definitions/v1alpha1HostPathVolumeSource",
+          "title": "HostPath represents a pre-existing file or directory on the host\nmachine that is directly exposed to the container. This is generally\nused for system agents or other privileged things that are allowed\nto see the host machine. Most containers will NOT need this.\nMore info: http://kubernetes.io/docs/user-guide/volumes#hostpath\n---\nTODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not\nmount host directories as read/write.\n+optional"
+        },
+        "iscsi": {
+          "$ref": "#/definitions/v1alpha1ISCSIVolumeSource",
+          "title": "ISCSI represents an ISCSI Disk resource that is attached to a\nkubelet's host machine and then exposed to the pod.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/iscsi/README.md\n+optional"
+        },
+        "nfs": {
+          "$ref": "#/definitions/v1alpha1NFSVolumeSource",
+          "title": "NFS represents an NFS mount on the host that shares a pod's lifetime\nMore info: http://kubernetes.io/docs/user-guide/volumes#nfs\n+optional"
+        },
+        "persistentVolumeClaim": {
+          "$ref": "#/definitions/v1alpha1PersistentVolumeClaimVolumeSource",
+          "title": "PersistentVolumeClaimVolumeSource represents a reference to a\nPersistentVolumeClaim in the same namespace.\nMore info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims\n+optional"
+        },
+        "photonPersistentDisk": {
+          "$ref": "#/definitions/v1alpha1PhotonPersistentDiskVolumeSource",
+          "title": "PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine"
+        },
+        "quobyte": {
+          "$ref": "#/definitions/v1alpha1QuobyteVolumeSource",
+          "title": "Quobyte represents a Quobyte mount on the host that shares a pod's lifetime\n+optional"
+        },
+        "rbd": {
+          "$ref": "#/definitions/v1alpha1RBDVolumeSource",
+          "title": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime.\nMore info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md\n+optional"
+        },
+        "secret": {
+          "$ref": "#/definitions/v1alpha1SecretVolumeSource",
+          "title": "Secret represents a secret that should populate this volume.\nMore info: http://kubernetes.io/docs/user-guide/volumes#secrets\n+optional"
+        },
+        "vsphereVolume": {
+          "$ref": "#/definitions/v1alpha1VsphereVirtualDiskVolumeSource",
+          "title": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine\n+optional"
+        }
+      },
+      "type": "object"
+    },
+    "v1alpha1VsphereVirtualDiskVolumeSource": {
+      "description": "Represents a vSphere volume resource.",
+      "properties": {
+        "fsType": {
+          "description": "Filesystem type to mount.\nMust be a filesystem type supported by the host operating system.\nEx. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+          "type": "string"
+        },
+        "volumePath": {
+          "title": "Path that identifies vSphere volume vmdk",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.appscode.com",
+  "info": {
+    "title": "client.proto",
+    "version": "1alpha1"
+  },
+  "paths": {
+    "/_appscode/api/cloud/v1alpha1/disks/json": {
+      "get": {
+        "operationId": "List",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cluster",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1DiskListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1DiskCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/_appscode/api/cloud/v1alpha1/disks/{name}/json": {
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "cluster",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "provider",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1DiskDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/_appscode/api/cloud/v1alpha1/disks/{uid}/json": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/plow/v1alpha1/actions/copy/json": {
+      "put": {
+        "operationId": "Copy",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1CopyResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json": {
+      "post": {
+        "operationId": "EditConfigMap",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ConfigMapEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "summary": "Followings are type specific actions api, that can be applied upon fixed resources.\nTODO: (@sadlil) Consider seperating them.",
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json": {
+      "post": {
+        "operationId": "EditSecret",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1SecretEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json": {
+      "post": {
+        "operationId": "RegisterPersistentVolumeClaim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1PersistentVolumeClaimRegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json": {
+      "delete": {
+        "operationId": "UnregisterPersistentVolumeClaim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/persistentvolumes/{name}/actions/register/json": {
+      "post": {
+        "operationId": "RegisterPersistentVolume",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1PersistentVolumeRegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json": {
+      "delete": {
+        "operationId": "UnregisterPersistentVolume",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/{type}/json": {
+      "get": {
+        "operationId": "List",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "format": "boolean",
+            "in": "query",
+            "name": "include_metrics",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "description": "map type is not supported by grpc-gateway as query params.\nhttps://github.com/grpc-ecosystem/grpc-gateway/blob/master/runtime/query.go#L57\nhttps://github.com/grpc-ecosystem/grpc-gateway/issues/316\nmap<string, string> label_selector = 6;\nexample label_selector=environment=production,tier=frontend.",
+            "in": "query",
+            "name": "selector",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ListResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1CreateResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/{type}/{name}/json": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      },
+      "get": {
+        "operationId": "Describe",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "raw",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "format": "boolean",
+            "in": "query",
+            "name": "include_metrics",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1DescribeResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      },
+      "put": {
+        "operationId": "Update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1alpha1UpdateResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/plow/v1alpha1/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json": {
+      "get": {
+        "operationId": "ReverseIndex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "targetType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "namespace",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "api_version",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1alpha1ListResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}
