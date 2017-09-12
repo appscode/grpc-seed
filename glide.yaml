@@ -1,10 +1,38 @@
 package: github.com/appscode/plow
 import:
 - package: github.com/appscode/go
-- package: github.com/appscode/pat
-- package: github.com/jpillora/go-ogle-analytics
-- package: github.com/prometheus/client_golang
-  version: v0.8.0
+- package: github.com/appscode/log
+- package: github.com/golang/glog
+- package: golang.org/x/net
+  version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
+- package: golang.org/x/text
+  version: 470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4
+- package: github.com/golang/protobuf
+  version: 6e4cc92cc905d5f4a73041c1b8228ea08f4c6147
+- package: github.com/grpc-ecosystem/grpc-gateway
+  version: v1.2.2-ac
+  repo: https://github.com/appscode/grpc-gateway.git
+  vcs: git
+- package: github.com/soheilhy/cmux
+  version: v0.1.2
 - package: github.com/spf13/cobra
 - package: github.com/spf13/pflag
-  version: v1.0.0
+- package: github.com/xeipuuv/gojsonschema
+- package: google.golang.org/grpc
+  version: v1.3.0
+- package: google.golang.org/genproto
+- package: k8s.io/kubernetes
+  version: ~1.6.0
+- package: k8s.io/apimachinery
+  version: 75b8dd260ef0469d96d578705a87cffd0e09dab8
+- package: k8s.io/client-go
+  version: v3.0.0-beta.0
+- package: k8s.io/helm
+  repo: https://github.com/appscode/helm.git
+  version: 2.5.1-ac
+- package: github.com/grpc-ecosystem/go-grpc-prometheus
+  version: master
+- package: github.com/jpillora/go-ogle-analytics
+testImport:
+- package: github.com/stretchr/testify
+  version: v1.1.4

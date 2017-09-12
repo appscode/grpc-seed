@@ -24,9 +24,15 @@ $ cd $(go env GOPATH)/src/github.com/appscode/plow
 To install various dev tools for Plow, run the following command:
 
 ```console
+# setting up dependencies for compiling protobufs...
+$ ./_proto/hack/builddeps.sh
+
 # setting up dependencies for compiling plow...
 $ ./hack/builddeps.sh
 ```
+
+Please note that this replaces various tools with specific versions needed to compile plow. You can find the full list here:
+[/_proto/hack/builddeps.sh#L54](/_proto/hack/builddeps.sh#L54).
 
 #### Build Binary
 ```

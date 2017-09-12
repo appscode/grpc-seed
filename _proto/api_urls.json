@@ -1,0 +1,184 @@
+{
+  "/_appscode/api/cloud/v1alpha1/buckets/json": {
+    "get": {
+      "file": "/plow/v1alpha1/metadata.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/buckets/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha1/disks/*/json": {
+    "delete": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/disks/{uid}/json"
+    },
+    "get": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/disks/{name}/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha1/disks/json": {
+    "get": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/disks/json"
+    },
+    "post": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/disks/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha1/regions/*/zones/json": {
+    "get": {
+      "file": "/plow/v1alpha1/metadata.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/regions/{region}/zones/json"
+    }
+  },
+  "/_appscode/api/cloud/v1alpha1/regions/json": {
+    "get": {
+      "file": "/plow/v1alpha1/metadata.proto",
+      "url": "/_appscode/api/cloud/v1alpha1/regions/json"
+    }
+  },
+  "/plow/v1alpha1/actions/copy/json": {
+    "put": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/actions/copy/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/*/*/*/reverseindex/json": {
+    "get": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/{type}/{name}/{targetType}/reverseindex/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/*/*/json": {
+    "delete": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/{type}/{name}/json"
+    },
+    "get": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/{type}/{name}/json"
+    },
+    "put": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/{type}/{name}/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/*/json": {
+    "get": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/{type}/json"
+    },
+    "post": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/{type}/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/actions/apply/json": {
+    "put": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/{name}/actions/apply/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/actions/notify-incident/json": {
+    "post": {
+      "file": "/plow/v1alpha1/incident.proto",
+      "url": "/plow/v1alpha1/clusters/{kubernetes_cluster}/actions/notify-incident/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/actions/reconfigure/json": {
+    "put": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/{name}/actions/reconfigure/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/client-config/json": {
+    "get": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/{name}/client-config/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/json": {
+    "delete": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/{name}/json"
+    },
+    "get": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/{uid}/json"
+    },
+    "put": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/{name}/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/metadata/json": {
+    "get": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/{uid}/metadata/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/namespaces/*/configmaps/*/actions/edit/json": {
+    "post": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/namespaces/{namespace}/configmaps/{name}/actions/edit/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/namespaces/*/secrets/*/actions/edit/json": {
+    "post": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/namespaces/{namespace}/secrets/{name}/actions/edit/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/persistentvolumeclaims/*/actions/register/json": {
+    "post": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/register/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/persistentvolumeclaims/*/actions/unregister/json": {
+    "delete": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/persistentvolumeclaims/{name}/actions/unregister/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/persistentvolumes/*/actions/register/json": {
+    "post": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/persistentvolumes/{name}/actions/register/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/*/persistentvolumes/*/actions/unregister/json": {
+    "delete": {
+      "file": "/plow/v1alpha1/client.proto",
+      "url": "/plow/v1alpha1/clusters/{cluster}/persistentvolumes/{name}/actions/unregister/json"
+    }
+  },
+  "/plow/v1alpha1/clusters/json": {
+    "get": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/json"
+    },
+    "post": {
+      "file": "/plow/v1alpha1/cluster.proto",
+      "url": "/plow/v1alpha1/clusters/json"
+    }
+  },
+  "/plow/v1alpha1/incidents/*/events/json": {
+    "post": {
+      "file": "/plow/v1alpha1/incident.proto",
+      "url": "/plow/v1alpha1/incidents/{phid}/events/json"
+    }
+  },
+  "/plow/v1alpha1/incidents/*/json": {
+    "get": {
+      "file": "/plow/v1alpha1/incident.proto",
+      "url": "/plow/v1alpha1/incidents/{phid}/json"
+    }
+  },
+  "/plow/v1alpha1/incidents/json": {
+    "get": {
+      "file": "/plow/v1alpha1/incident.proto",
+      "url": "/plow/v1alpha1/incidents/json"
+    }
+  }
+}
