@@ -52,7 +52,7 @@ To build and push your custom Docker image, follow the steps below. To release a
 
 ```console
 # Build Docker image
-$ ./hack/docker/plow/setup.sh; ./hack/docker/plow/setup.sh push
+$ ./hack/docker/setup.sh; ./hack/docker/setup.sh push
 
 # Add docker tag for your repository
 $ docker tag appscode/plow:<tag> <image>:<tag>
